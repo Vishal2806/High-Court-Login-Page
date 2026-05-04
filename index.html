@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Court of Chhattisgarh – e-Certified Copy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=EB+Garamond:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Tricolor Top Bar -->
+    <div class="tricolor-bar">
+        <span class="bar-saffron"></span>
+        <span class="bar-white"></span>
+        <span class="bar-green"></span>
+    </div>
+
+    <!-- Top Utility Bar -->
+    <div class="utility-bar">
+        <div class="utility-inner">
+            <span class="utility-left">
+                <span class="skip-link">Skip to Main Content</span>
+                <span class="sep">|</span>
+                <span>Screen Reader</span>
+                <span class="sep">|</span>
+                <span>Sitemap</span>
+            </span>
+            <span class="utility-right">
+                <span class="font-ctrl" id="fontDecrease">A-</span>
+                <span class="font-ctrl active" id="fontNormal">A</span>
+                <span class="font-ctrl" id="fontIncrease">A+</span>
+                <span class="sep">|</span>
+                <button class="theme-toggle" id="toggleBtn" aria-label="Toggle dark mode">
+                    <span class="theme-icon">☀</span>
+                    <span class="theme-label">Light Mode</span>
+                </button>
+                <span class="sep">|</span>
+                <span class="lang-switch">हिंदी</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-inner">
+            <div class="emblem-block">
+                <img src="./Natonal Emblem SVG/National-Emblem-01.svg" alt="National Emblem of India" class="logo" onerror="this.style.display='none'">
+                <div class="emblem-fallback" aria-hidden="true">⚖</div>
+            </div>
+            <div class="header-text">
+                <p class="gov-label">Government of India</p>
+                <h1 class="court-name">High Court of Chhattisgarh</h1>
+                <p class="court-sub">उच्च न्यायालय, छत्तीसगढ़ &nbsp;|&nbsp; Bilaspur</p>
+            </div>
+            <div class="header-logo-right">
+                <img src="NIC-LOGO-IDENTITY-VARIANTS_blue-01.png" alt="NIC Logo" class="nic-logo-top" onerror="this.style.display='none'">
+            </div>
+        </div>
+        <div class="header-divider">
+            <span class="divider-text">e-Certified Copy Portal</span>
+        </div>
+    </header>
+
+    <!-- Navigation Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="#">Home</a>
+            <span class="bc-sep">›</span>
+            <a href="#">Services</a>
+            <span class="bc-sep">›</span>
+            <span class="bc-current">e-Certified Copy Login</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main" id="main-content" role="main">
+        <div class="page-layout">
+
+            <!-- Info Panel -->
+            <aside class="info-panel" aria-label="About e-Certified Copy">
+                <div class="info-card">
+                    <div class="info-icon">📋</div>
+                    <h2>e-Certified Copy</h2>
+                    <p>Access digitally certified copies of court orders, judgments, and case documents — securely and instantly.</p>
+                </div>
+                <div class="info-steps">
+                    <h3>How to Apply</h3>
+                    <ol>
+                        <li>Login with your registered mobile number</li>
+                        <li>Search for your case using CNR or case number</li>
+                        <li>Select the required document</li>
+                        <li>Make payment & download certified copy</li>
+                    </ol>
+                </div>
+                <div class="info-contact">
+                    <h3>Helpdesk</h3>
+                    <p>📞 0775-2234567</p>
+                    <p>✉ ecopy-hcbsp@nic.in</p>
+                    <p class="hours">Mon – Sat, 10:00 AM – 5:00 PM</p>
+                </div>
+            </aside>
+
+            <!-- Login Card -->
+            <div class="login-wrapper">
+                <div class="login-card split-card">
+                    <!-- Court Image Panel -->
+                    <div class="card-image-panel">
+                        <img src="latestt.jpeg" alt="High Court of Chhattisgarh Building" class="court-img">
+                        <div class="image-overlay">
+                            <p class="image-caption">High Court of Chhattisgarh</p>
+                            <p class="image-caption-sub">Bilaspur, Chhattisgarh</p>
+                        </div>
+                    </div>
+                    <!-- Form Panel -->
+                    <div class="card-form-panel">
+                    <div class="login-header">
+                        <div class="login-icon">🔐</div>
+                        <h2>Citizen Login</h2>
+                        <p>Sign in to access your e-Certified Copy account</p>
+                    </div>
+
+                    <form class="login-form" onsubmit="return handleLogin(event)">
+                        <div class="field-group">
+                            <label for="mobile">Mobile Number <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">📱</span>
+                                <input type="tel" id="mobile" name="mobile"
+                                    placeholder="Enter 10-digit mobile number"
+                                    maxlength="10" pattern="[0-9]{10}"
+                                    autocomplete="tel" required>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="password" name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password" required>
+                                <button type="button" class="eye-btn" id="eyeBtn" aria-label="Toggle password visibility">👁</button>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="captchaInput">Security Code <span class="required">*</span></label>
+                            <div class="captcha-row">
+                                <div class="captcha-display" id="captchaDisplay" aria-label="Security code">
+                                    <span id="captchaText"></span>
+                                </div>
+                                <button type="button" class="refresh-btn" id="refreshBtn" aria-label="Refresh security code" title="Refresh captcha">
+                                    ⟳ Refresh
+                                </button>
+                            </div>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🛡</span>
+                                <input type="text" id="captchaInput" name="captchaInput"
+                                    placeholder="Enter the security code above"
+                                    maxlength="6" autocomplete="off" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <label class="remember-label">
+                                <input type="checkbox" id="remember"> Remember this device
+                            </label>
+                        </div>
+
+                        <button type="submit" class="login-btn">
+                            <span class="btn-text">Login Securely</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+
+                        <div id="loginMsg" class="login-msg" role="alert" aria-live="polite"></div>
+                    </form>
+
+                    <div class="login-links">
+                        <a href="#" class="link-item">🔑 Forgot Password?</a>
+                        <a href="#" class="link-item">👤 Create New Account</a>
+                        <a href="#" class="link-item">✅ Verify Your Account</a>
+                    </div>
+                    </div><!-- end card-form-panel -->
+                </div><!-- end split-card -->
+
+                <!-- Notice Box -->
+                <div class="notice-box" role="note">
+                    <span class="notice-icon">⚠️</span>
+                    <div class="notice-text">
+                        <strong>Important Notice:</strong> Unauthorized access to this system is strictly prohibited and may attract penal action under the IT Act, 2000. All activities are monitored and logged.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Case Status</a></li>
+                    <li><a href="#">Cause List</a></li>
+                    <li><a href="#">Daily Orders</a></li>
+                    <li><a href="#">Judgments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-center">
+                <p class="footer-court">HIGH COURT OF CHHATTISGARH</p>
+                <p>Seepat Road, Bilaspur – 495 001 (C.G.)</p>
+                <p class="footer-copy">© 2024 High Court of Chhattisgarh. All Rights Reserved.</p>
+                <p>Designed & Maintained by <strong>High Court Computer Cell, Bilaspur</strong></p>
+                <p>Hosted by <strong>National Informatics Centre (NIC)</strong>, GoI</p>
+            </div>
+            <div class="footer-col footer-right-col">
+                <h4>Policies</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>Last Updated: 03 May 2025</span>
+            <span class="sep">|</span>
+            <span>Best viewed in Chrome 90+, Firefox 88+, Edge 90+</span>
+            <span class="sep">|</span>
+            <span>Resolution: 1024×768 or higher</span>
+        </div>
+    </footer>
+
+    <script>
+        // ── Captcha Generator ─────────────────────────────
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+        let currentCaptcha = '';
+
+        function generateCaptcha() {
+            currentCaptcha = Array.from({length: 6}, () =>
+                chars[Math.floor(Math.random() * chars.length)]
+            ).join('');
+            const el = document.getElementById('captchaText');
+            el.textContent = currentCaptcha;
+            // Slightly scramble character spacing for visual effect
+            el.style.letterSpacing = (2 + Math.random() * 3).toFixed(1) + 'px';
+        }
+        generateCaptcha();
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            generateCaptcha();
+            document.getElementById('captchaInput').value = '';
+        });
+
+        // ── Password Toggle ───────────────────────────────
+        document.getElementById('eyeBtn').addEventListener('click', function () {
+            const pwd = document.getElementById('password');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                this.textContent = '🙈';
+            } else {
+                pwd.type = 'password';
+                this.textContent = '👁';
+            }
+        });
+
+        // ── Login Handler ─────────────────────────────────
+        function handleLogin(e) {
+            e.preventDefault();
+            const captchaInput = document.getElementById('captchaInput').value.trim();
+            const msg = document.getElementById('loginMsg');
+
+            if (captchaInput.toLowerCase() !== currentCaptcha.toLowerCase()) {
+                msg.textContent = '✗ Incorrect security code. Please try again.';
+                msg.className = 'login-msg error';
+                generateCaptcha();
+                document.getElementById('captchaInput').value = '';
+                return false;
+            }
+            msg.textContent = '✓ Authenticating… Please wait.';
+            msg.className = 'login-msg success';
+            return false;
+        }
+
+        // ── Dark Mode Toggle ──────────────────────────────
+        const toggleBtn = document.getElementById('toggleBtn');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            toggleBtn.querySelector('.theme-icon').textContent = isDark ? '☽' : '☀';
+            toggleBtn.querySelector('.theme-label').textContent = isDark ? 'Dark Mode' : 'Light Mode';
+        });
+
+        // ── Font Size Controls ────────────────────────────
+        let fontSize = 16;
+        document.getElementById('fontDecrease').addEventListener('click', () => {
+            if (fontSize > 12) { fontSize -= 1; document.documentElement.style.fontSize = fontSize + 'px'; }
+        });
+        document.getElementById('fontNormal').addEventListener('click', () => {
+            fontSize = 16; document.documentElement.style.fontSize = fontSize + 'px';
+        });
+        document.getElementById('fontIncrease').addEventListener('click', () => {
+            if (fontSize < 22) { fontSize += 1; document.documentElement.style.fontSize = fontSize + 'px'; }
+        });
+    </script>
+</body>
+</html>
