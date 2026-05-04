@@ -79,6 +79,9 @@ a:hover { color: var(--gold); text-decoration: underline; }
 
 body.dark a { color: #7aa8e0; }
 body.dark a:hover { color: var(--gold-light); }
+body.dark .logo {
+    filter: brightness(0) invert(1) opacity(0.85);
+}
 
 /* ── Tricolor Bar ────────────────────────────── */
 .tricolor-bar {
@@ -293,29 +296,119 @@ body.dark .breadcrumb-inner a { color: #7aa8e0; }
 /* ── Main Layout ─────────────────────────────── */
 .main {
     flex: 1;
-    padding: 32px 20px;
+    padding: 0;
 }
-.page-layout {
-    max-width: 1100px;
+
+/* 3-column full-width portal grid */
+.portal-grid {
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 28px;
+    grid-template-columns: 340px 1fr 260px;
+    gap: 0;
+    min-height: 620px;
+    padding: 28px 20px;
+    gap: 24px;
     align-items: start;
 }
 
-/* ── Info Panel ──────────────────────────────── */
-.info-panel {
+/* ── LEFT: Image Column ───────────────────────── */
+.image-column {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    min-height: 500px;
+    align-self: stretch;
+    resize: horizontal;
+    overflow: hidden;
+    min-width: 100px;
+    max-width: 600px;
+}
+.image-column .court-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+.image-column:hover .court-img {
+    transform: scale(1.04);
+}
+.image-column .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10,20,50,0.15) 0%,
+        rgba(10,20,50,0.05) 40%,
+        rgba(10,20,50,0.75) 75%,
+        rgba(10,20,50,0.92) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 28px 24px;
+}
+.overlay-content {
+    color: #fff;
+    width: 100%;
+}
+.overlay-tagline {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.overlay-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 6px;
+    color: #fff;
+}
+.overlay-sub {
+    font-size: 12px;
+    color: rgba(200,216,240,0.85);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+.overlay-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 14px;
+    border-radius: 2px;
+}
+.overlay-quote {
+    font-family: var(--font-serif);
+    font-size: 12.5px;
+    font-style: italic;
+    color: rgba(200,216,240,0.75);
+    line-height: 1.6;
+}
+
+/* ── CENTER: Form Column ─────────────────────── */
+.form-column {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+/* ── RIGHT: Info Column ──────────────────────── */
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 .info-card, .info-steps, .info-contact {
     background: var(--surface);
     border: 1px solid var(--border);
     border-top: 3px solid var(--navy);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 18px;
     box-shadow: var(--shadow-sm);
     transition: background 0.3s ease, border-color 0.3s ease;
 }
@@ -324,12 +417,12 @@ body.dark .info-steps,
 body.dark .info-contact { border-top-color: var(--gold); }
 
 .info-icon {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 .info-card h2 {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 16px;
     color: var(--navy);
     margin-bottom: 8px;
 }
@@ -341,23 +434,23 @@ body.dark .info-card h2 { color: #9ec4ff; }
 }
 .info-steps h3, .info-contact h3 {
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 12px;
     color: var(--navy);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border);
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
 }
 body.dark .info-steps h3,
 body.dark .info-contact h3 { color: #9ec4ff; }
 .info-steps ol {
-    padding-left: 18px;
-    font-size: 13px;
+    padding-left: 16px;
+    font-size: 12.5px;
     color: var(--text-muted);
 }
 .info-steps ol li {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     line-height: 1.5;
 }
 .info-contact p {
@@ -366,90 +459,13 @@ body.dark .info-contact h3 { color: #9ec4ff; }
     margin-bottom: 6px;
 }
 .info-contact .hours {
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--text-light);
-    margin-top: 6px;
+    margin-top: 4px;
     font-style: italic;
 }
 
-/* ── Login Wrapper ───────────────────────────── */
-.login-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 520px;
-}
-
-/* ── Split Login Card (Image + Form) ─────────── */
-.split-card {
-    display: flex;
-    padding: 0;
-    overflow: hidden;
-    max-width: 720px;
-}
-
-.card-image-panel {
-    width: 42%;
-    flex-shrink: 0;
-    position: relative;
-    min-height: 480px;
-    overflow: hidden;
-}
-.court-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
-}
-.split-card:hover .court-img {
-    transform: scale(1.03);
-}
-.image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(10,20,50,0.88));
-    padding: 30px 16px 16px;
-    text-align: center;
-}
-.image-caption {
-    color: #fff;
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    line-height: 1.4;
-}
-.image-caption-sub {
-    color: rgba(200,216,240,0.85);
-    font-size: 11px;
-    margin-top: 3px;
-}
-
-.card-form-panel {
-    flex: 1;
-    padding: 28px 26px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-/* Adjust login-header inside split card */
-.split-card .login-header {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-}
-.split-card .login-header h2 { font-size: 19px; }
-
-@media (max-width: 700px) {
-    .split-card { flex-direction: column; }
-    .card-image-panel { width: 100%; min-height: 180px; max-height: 200px; }
-    .card-form-panel { padding: 22px 18px; }
-}
-
-/* ── Login Card (original, kept for non-split) ── */
+/* ── Login Card ──────────────────────────────── */
 .login-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -824,17 +840,36 @@ body.dark .notice-box {
 .footer-bottom .sep { color: #2a3a50; }
 
 /* ── Responsive ──────────────────────────────── */
-@media (max-width: 900px) {
-    .page-layout {
-        grid-template-columns: 1fr;
+@media (max-width: 1024px) {
+    .portal-grid {
+        grid-template-columns: 260px 1fr 230px;
+        gap: 18px;
     }
-    .info-panel {
-        display: grid;
+    .image-column { min-height: 500px; }
+}
+
+@media (max-width: 860px) {
+    /* Stack: info top, then image+form side by side */
+    .portal-grid {
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+    .image-column {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        min-height: 400px;
+    }
+    .form-column {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    .info-column {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 14px;
     }
-    .info-card { grid-column: 1 / -1; }
-    .login-wrapper { max-width: 100%; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
     .footer-right-col { text-align: left; }
     .footer-right-col ul { align-items: flex-start; }
@@ -842,11 +877,26 @@ body.dark .notice-box {
 }
 
 @media (max-width: 640px) {
+    .portal-grid {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+    .image-column {
+        grid-column: 1;
+        grid-row: auto;
+        min-height: 220px;
+        max-height: 260px;
+    }
+    .form-column { grid-column: 1; grid-row: auto; }
+    .info-column {
+        grid-column: 1;
+        grid-row: auto;
+        grid-template-columns: 1fr;
+    }
     .header-inner { padding: 12px 16px; gap: 12px; }
     .court-name { font-size: 18px; }
     .header-logo-right { display: none; }
     .login-card { padding: 22px 18px; }
-    .info-panel { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; }
     .footer-right-col { text-align: left; }
     .footer-right-col ul { align-items: flex-start; }
@@ -856,7 +906,7 @@ body.dark .notice-box {
 
 @media (max-width: 400px) {
     .court-name { font-size: 16px; }
-    .main { padding: 20px 14px; }
+    .portal-grid { padding: 12px; }
 }
 
 /* ── Animations ──────────────────────────────── */
